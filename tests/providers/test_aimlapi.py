@@ -226,3 +226,19 @@ def test_live_extract_returns_markdown() -> None:
         pytest.skip("AIMLAPI_API_KEY not set")
     response = AimlapiExtractProvider().extract(ExtractRequest(urls=["https://example.com"]))
     assert response.documents and "Example Domain" in response.documents[0].content
+
+
+def test_auto_reaches_aimlapi_last_and_only_with_its_key(monkeypatch: pytest.MonkeyPatch) -> None:
+    from web_router.constants import ENV_BY_PROVIDER, EXTRACT_ENV_BY_PROVIDER
+    from web_router.providers.auto import AutoExtractProvider, AutoProvider
+
+    every_key = {*filter(None, ENV_BY_PROVIDER.values())}
+    every_key |= {var for variables in EXTRACT_ENV_BY_PROVIDER.values() for var in variables}
+    for env_var in every_key:
+        monkeypatch.delenv(env_var, raising=False)
+    without = [[name for name, _ in auto.default_chain()] for auto in (AutoProvider, AutoExtractProvider)]
+    assert all("aimlapi" not in chain for chain in without)
+
+    monkeypatch.setenv("AIMLAPI_API_KEY", KEY)
+    for auto, before in zip((AutoProvider, AutoExtractProvider), without, strict=True):
+        assert [name for name, _ in auto.default_chain()] == [*before, "aimlapi"]
