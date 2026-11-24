@@ -3184,7 +3184,7 @@
       "mode": null,
       "price_usd": 0.195,
       "unit": "per_1k",
-      "note": "the `litescrape/web-fetch` tool, per page, as `/v1/tools/inspect` quotes it; a page that fails is not charged",
+      "note": "the `litescrape/web-fetch` tool, per page, as `/v1/tools/inspect` quotes it",
       "source_url": "https://docs.aimlapi.com/quickstart/toolbox",
       "checked": "2026-11-24",
       "setup": null,
