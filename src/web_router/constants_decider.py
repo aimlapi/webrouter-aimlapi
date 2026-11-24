@@ -83,10 +83,12 @@ LLM_PRESETS: dict[str, tuple[str, str, str]] = {
     "anthropic": ("https://api.anthropic.com/v1", "ANTHROPIC_API_KEY", MODE_JSON_SCHEMA),
     "openrouter": ("https://openrouter.ai/api/v1", "OPENROUTER_API_KEY", MODE_JSON_SCHEMA),
     "groq": ("https://api.groq.com/openai/v1", "GROQ_API_KEY", MODE_JSON_OBJECT),
+    "aimlapi": ("https://api.aimlapi.com/v1", "AIMLAPI_API_KEY", MODE_JSON_SCHEMA),
 }
 """``llm`` preset -> (base URL, key variable, structured-output mode). Anthropic's compatible endpoint takes
 only a strict ``json_schema``; DeepSeek, and Groq on every model, take ``json_object``. A ``base_url`` with no
-preset asks in the prompt only, which any server reads."""
+preset asks in the prompt only, which any server reads. AI/ML API, like OpenRouter, routes to many vendors' models
+and takes a strict schema where the model does."""
 
 SYSTEMONE_DEFAULT_PATH = "/v1/systemone"
 SYSTEMONE_PRESETS: dict[str, tuple[str, str, str, str]] = {
@@ -100,6 +102,7 @@ KEY_HOMES: dict[str, str] = {
     "ANTHROPIC_API_KEY": "api.anthropic.com",
     "OPENROUTER_API_KEY": "openrouter.ai",
     "GROQ_API_KEY": "api.groq.com",
+    "AIMLAPI_API_KEY": "api.aimlapi.com",
     "TYPESAFE_API_KEY": "api.typesafe.ai",
     GEMINI_KEY_ENV: GEMINI_HOST,
 }

@@ -11,7 +11,7 @@ browse only unless ``route_tools`` says otherwise; ``plan()`` always asks it.
 **This router sends each prompt to the model's server.**
 
 ``LLM_ROUTER_PRESET`` picks the server -- ``openai`` (the default),
-``anthropic``, ``deepseek``, ``groq`` or ``openrouter`` -- and its key is that
+``anthropic``, ``deepseek``, ``groq``, ``openrouter`` or ``aimlapi`` -- and its key is that
 vendor's variable, such as ``OPENAI_API_KEY``. ``LLM_ROUTER_MODEL`` names the
 model, as the server spells it. With no model or key this prints what to set
 and exits. Each plan bills one model call on that server.

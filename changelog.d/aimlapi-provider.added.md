@@ -1,0 +1,1 @@
+AI/ML API as a search and extract backend (`provider="aimlapi"`, `AIMLAPI_API_KEY`), through its Toolbox: extract returns `markdown`, `html` or `text`, one run per URL. Its key goes only to `tools.aimlapi.com`. The `llm` router also gains an `aimlapi` preset (`https://api.aimlapi.com/v1`, strict JSON schema), whose key goes only to `api.aimlapi.com`.

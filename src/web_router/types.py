@@ -88,6 +88,7 @@ class Provider(str, Enum):
     DEEPSEEK = "deepseek"
     VALYU = "valyu"
     SPECSTREAM = "specstream"
+    AIMLAPI = "aimlapi"
     AGENTCORE = "agentcore"
     YOU_MCP = "you-mcp"
     EXA_MCP = "exa-mcp"
@@ -673,10 +674,9 @@ BROWSE_PARAMETERS: frozenset[str] = BrowseRequest.normalized_parameters()
 class BrowseStep(BaseModel):
     """One action the agent reported taking.
 
-    Only what the backend reported: a task whose backend returns no step list
-    has an empty :attr:`BrowseResponse.steps`, never one reconstructed from the
-    final answer. There is no step number -- the list is in the order the
-    backend gave, and a backend's own numbering, when it has one, is in
+    Only what the backend reported: a task whose backend returns no step list has an empty :attr:`BrowseResponse.steps`,
+    never one reconstructed from the final answer. There is no step number -- the list is in the order the backend gave,
+    and a backend's own numbering, when it has one, is in
     :attr:`extra`.
     """
 

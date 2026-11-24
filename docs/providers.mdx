@@ -42,6 +42,7 @@ used here for identification only.
 | [Seltz](https://docs.seltz.ai) | ✓ |  |  |  |  |  |  |
 | [Skyvern](https://skyvern.com) |  |  |  |  |  |  | ✓ |
 | [SpecStream](https://specstream.ai/agents.md) | ✓ | ✓ |  |  |  |  |  |
+| [AI/ML API](https://docs.aimlapi.com/quickstart/toolbox) | ✓ | ✓ |  |  |  |  |  |
 | [Steel](https://steel.dev) |  |  |  |  |  | ✓ |  |
 | [Tavily](https://tavily.com) | ✓ keyless | ✓ keyless |  |  |  |  |  |
 | [Valyu](https://docs.valyu.ai) | ✓ |  |  |  |  |  |  |
@@ -90,6 +91,7 @@ and what `response.provider` and `configured_providers()` report back.
 | `Provider.OCTEN` | `octen` | [Octen Web Search](https://docs.octen.ai/api-reference/search) | direct HTTP | `max_results` (at most 100), `include_domains`, `exclude_domains`, `locale` (18 languages), `recency`, `search_depth` (`fast`, `deep`, as `full_content`) |
 | `Provider.KEIROLABS` | `keirolabs` | [Keirolabs](https://keirolabs.cloud) lite search | direct HTTP | `max_results`. Titles, links and snippets, billed per search whatever the count |
 | `Provider.SPECSTREAM` | `specstream` | [SpecStream Search](https://specstream.ai/agents.md) | direct HTTP, `GET /v1/web-search` | `max_results` (sent as `num`, at most 100). `passages=true` through `provider_options` puts each page's excerpt in `content` |
+| `Provider.AIMLAPI` | `aimlapi` | [AI/ML API Toolbox](https://docs.aimlapi.com/quickstart/toolbox) | direct HTTP, `POST /v1/tools/run` (tool `web/search`) | `max_results` (at most 20), `include_domains`. `max_cost_usd` through `provider_options` caps the price of a run |
 | `Provider.YOU_MCP` | `you-mcp` | [You.com MCP](https://api.you.com/mcp) | direct HTTP, **no key** | all but `effort` |
 | `Provider.EXA_MCP` | `exa-mcp` | [Exa MCP](https://exa.ai/docs/reference/exa-mcp), its `web_search_advanced_exa` tool | direct HTTP, **no key** | all but `locale` |
 | `Provider.EXA_LITELLM` | `exa-litellm` | [Exa](https://exa.ai) through your [LiteLLM proxy](https://docs.litellm.ai/docs/search) | direct HTTP to the proxy's `/v1/search/exa`, its key (`LITELLM_PROXY_API_KEY`) | as `exa` |
@@ -124,6 +126,7 @@ which ones this environment can use.
 | `Provider.JINA` | `jina` | [Jina Reader](https://jina.ai/reader) | **none** (`JINA_API_KEY` raises the rate limit) | `markdown`, `html`, `text` |
 | `Provider.BROWSERBASE` | `browserbase` | [Browserbase Fetch](https://docs.browserbase.com/features/fetch) — a plain fetch, never a rendered page; the one backend that maps `profile` | `BROWSERBASE_API_KEY` | `markdown`, `html` |
 | `Provider.SPECSTREAM` | `specstream` | [SpecStream Extract](https://specstream.ai/agents.md) | `SPECSTREAM_API_KEY` | `markdown`, `text` |
+| `Provider.AIMLAPI` | `aimlapi` | [AI/ML API Toolbox](https://docs.aimlapi.com/quickstart/toolbox) (tool `litescrape/web-fetch`, one run per URL) | `AIMLAPI_API_KEY` | `markdown` *(default)*, `html`, `text` |
 | `Provider.AUTO` *(default)* | `auto` | — | the original backends you hold a key for, then the keyless ones, then Linkup, Exa, WebIQ, Keenable, DeepSeek, Browserbase and SpecStream | `markdown` *(default)*, `html`, `text`, each routed to a member that returns it; `profile` routed to one that maps it |
 | `Provider.MAX` | `max` |  | the same members as `auto`, **all at once**; the first document back wins, and every fetch started is paid for -- see [The fastest answer any backend can give](/extract#the-fastest-answer-any-backend-can-give-max) | as `auto` |
 

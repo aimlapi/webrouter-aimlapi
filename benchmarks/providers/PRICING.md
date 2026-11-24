@@ -281,6 +281,18 @@ block of 10 more results adds $6 per 1k, so 100 results are $59 per 1k. With `sp
 | `specstream` | default | Titles, URLs, a snippet and a date per result; an answer and rows in `raw` | $5 per 1k; searches of up to 10 results; each started block of 10 more adds $6 per 1k; $1 per 1k with `speed=fast` through provider_options | [specstream.ai](https://specstream.ai/agents.md) | 2026-11-19 |
 <!-- /prices -->
 
+### AI/ML API
+
+Per result, through the Toolbox `web/search` tool ([toolbox](https://docs.aimlapi.com/quickstart/toolbox)): $1.30 per
+1k results, with a $9.10 per 1k floor (up to 7 results) and a $22.10 per 1k cap. `POST /v1/tools/inspect` quotes the
+current price of a run before it starts; a run that fails is not charged.
+
+<!-- prices: method=search provider=aimlapi -->
+| Setup | What web-router sends | What it returns | Estimated price | Source | Checked |
+|---|---|---|---|---|---|
+| `aimlapi` | default | Titles, URLs, a snippet and, where known, a date per result | $9.10 per 1k; the `web/search` tool, $1.30 per 1k results with a $9.10 floor (up to 7 results) and a $22.10 cap, as `/v1/tools/inspect` quotes it | [docs.aimlapi.com](https://docs.aimlapi.com/quickstart/toolbox) | 2026-11-24 |
+<!-- /prices -->
+
 ### AWS AgentCore Web Search
 
 Billed by AWS to the account that owns the gateway: per query, plus the
@@ -350,6 +362,7 @@ key at the proxy's own cost map. These are LiteLLM's published defaults; an oper
 | browserbase | default | — | markdown | — | $1 per 1k; Fetch API calls past the included 1,000 (Free and Developer $20/mo); $0.50 per 1k past 10,000 on Startup ($99/mo); $4 per 1k with proxies, which web-router never turns on itself | [www.browserbase.com](https://www.browserbase.com/pricing) | 2026-11-08 |
 | browserbase | `browserbase-proxies` | `browserbase:browserbase-proxies` (unverified) | `proxies=true` | Fetched through Browserbase's proxies | $4 per 1k; $4 per 1k with proxies against $1 without | [www.browserbase.com](https://www.browserbase.com/pricing) | 2026-11-17 |
 | specstream | default | — | markdown (default) or text | — | $0.80 per 1k; per page read; a page that gives no text is not charged | [specstream.ai](https://specstream.ai/agents.md) | 2026-11-19 |
+| aimlapi | default | — | markdown (default), html or text | — | $0.195 per 1k; the `litescrape/web-fetch` tool, per page, as `/v1/tools/inspect` quotes it; a page that fails is not charged | [docs.aimlapi.com](https://docs.aimlapi.com/quickstart/toolbox) | 2026-11-24 |
 <!-- /prices -->
 
 ## Templates (Extract Templates)

@@ -460,12 +460,10 @@ _STUB_PAYLOADS: dict[str, Any] = {
     "deepseek": lambda urls: {"title": "", "content": _body(urls[0])},
     "browserbase": lambda urls: {"statusCode": 200, "content": _body(urls[0]), "contentType": "text/html"},
     "specstream": lambda urls: {"data": {"results": [{"url": u, "status": "ok", "text": _body(u)} for u in urls]}},
+    "aimlapi": lambda urls: {"status": "completed", "output": {"url": urls[0], "content": _body(urls[0])}},
 }
-"""The shape each backend really answers with, trimmed to what is mapped.
-
-Keyed by provider so a new backend has to be added here to pass the guarantees below -- which is the point: they are
-the ones a single-URL test cannot check.
-"""
+"""The shape each backend really answers with, trimmed to what is mapped. Keyed by provider so a new backend has to be
+added here to pass the guarantees below -- which is the point: they are the ones a single-URL test cannot check."""
 
 
 @pytest.mark.parametrize("name", TRANSLATING)

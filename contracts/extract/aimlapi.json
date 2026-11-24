@@ -1,0 +1,42 @@
+{
+  "provider": "aimlapi",
+  "method": "extract",
+  "class": "web_router.providers.aimlapi.AimlapiExtractProvider",
+  "transport": {
+    "kind": "http",
+    "base_url": "https://tools.aimlapi.com",
+    "paths": {
+      "extract_path": "/v1/tools/run"
+    },
+    "method": "POST",
+    "auth_header": "Authorization"
+  },
+  "credentials": [
+    "AIMLAPI_API_KEY"
+  ],
+  "keyless": null,
+  "always_sent": {
+    "body.input.respond_with": "markdown",
+    "body.input.url": "https://example.com",
+    "body.tool": "litescrape/web-fetch",
+    "body.wait_ms": 55000
+  },
+  "options": {
+    "format": {
+      "markdown": {
+        "unchanged": "no wire change"
+      },
+      "html": {
+        "body.input.respond_with": "html"
+      },
+      "text": {
+        "body.input.respond_with": "text"
+      }
+    }
+  },
+  "not_mapped": [
+    "profile"
+  ],
+  "default_format": "markdown",
+  "batches_urls": false
+}

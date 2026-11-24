@@ -469,7 +469,7 @@ httpx, so install the `remote` extra (`pip install "webrouter[remote]"`, or
   model's name as its server spells it. `router_config` also takes either a
   `preset` or a `base_url`, and `api_key_env`, `api_key`, `timeout_s` (3 s) and `route_tools`
   (research and browse unless set). Presets: `openai` and `anthropic` (a strict
-  JSON schema whose enum is the offered ids), `openrouter` (the same, where the
+  JSON schema whose enum is the offered ids), `openrouter` and `aimlapi` (the same, where the
   model supports it), `deepseek` and `groq` (JSON mode). A `base_url` of your
   own asks for JSON in the prompt only, and needs `api_key_env` unless it is
   on this machine. `response_format` (`json_schema`, `json_object` or
@@ -521,7 +521,7 @@ answer and extract. To have a model router order the backends of direct
 
 Each preset's key comes from that vendor's variable (`OPENAI_API_KEY`,
 `ANTHROPIC_API_KEY`, `DEEPSEEK_API_KEY`, `GROQ_API_KEY`,
-`OPENROUTER_API_KEY`, `TYPESAFE_API_KEY`, `GEMINI_API_KEY`), read once
+`OPENROUTER_API_KEY`, `AIMLAPI_API_KEY`, `TYPESAFE_API_KEY`, `GEMINI_API_KEY`), read once
 when the router is built, and is sent only to that vendor's host: naming one
 for another `base_url` raises `ConfigurationError`, as does a key that is
 missing. Each call sends the server the prompt -- for an extract, its URLs

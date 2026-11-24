@@ -1,0 +1,47 @@
+{
+  "id": "run_recorded",
+  "tool": "web/search",
+  "source": "exa",
+  "status": "completed",
+  "provider_status": 200,
+  "is_error": false,
+  "untrusted": true,
+  "output": {
+    "results": [
+      {
+        "url": "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
+        "title": "What is the Model Context Protocol (MCP)?",
+        "snippet": "MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems. Using MCP, AI applications like Claude or ChatGPT can connect to data sources (e.g. local files, databases), tools (e.g. search engines, calculators) and workflows (e.g. specialized…"
+      },
+      {
+        "url": "https://www.anthropic.com/news/model-context-protocol",
+        "title": "Introducing the Model Context Protocol \\ Anthropic",
+        "snippet": "Nov 25, 2024 Today, we're open-sourcing the Model Context Protocol (MCP), a new standard for connecting AI assistants to the systems where data lives, including content repositories, business tools, and development environments. Its aim is to help frontier models produce better, more relevant…",
+        "published_at": "2024-11-25T00:00:00.000Z"
+      },
+      {
+        "url": "https://cloud.google.com/discover/what-is-model-context-protocol",
+        "title": "What is Model Context Protocol (MCP)? A guide | Google Cloud",
+        "snippet": "This means they can't access real-time data or perform actions like booking a meeting or updating a customer record. The Model Context Protocol (MCP) is an open standard designed to solve this. Introduced by Anthropic in November 2024, MCP provides a secure and standardized \"language\" for LLMs to…"
+      }
+    ]
+  },
+  "cost": {
+    "quoted_usd": 0.0091,
+    "actual_usd": 0.0091,
+    "credits": 18200,
+    "over_max": false
+  },
+  "billed_units": 3,
+  "attempts": [
+    {
+      "source": "exa",
+      "status": "succeeded",
+      "duration_ms": 1997,
+      "charged": true
+    }
+  ],
+  "created_at": "2026-11-24T13:01:46.982Z",
+  "started_at": "2026-11-24T13:01:47.002Z",
+  "completed_at": "2026-11-24T13:01:49.002Z"
+}

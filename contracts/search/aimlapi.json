@@ -1,0 +1,45 @@
+{
+  "provider": "aimlapi",
+  "method": "search",
+  "class": "web_router.providers.aimlapi.AimlapiProvider",
+  "transport": {
+    "kind": "http",
+    "base_url": "https://tools.aimlapi.com",
+    "paths": {
+      "search_path": "/v1/tools/run"
+    },
+    "method": "POST",
+    "auth_header": "Authorization"
+  },
+  "credentials": [
+    "AIMLAPI_API_KEY"
+  ],
+  "keyless": null,
+  "always_sent": {
+    "body.input.query": "probe query",
+    "body.tool": "web/search",
+    "body.wait_ms": 55000
+  },
+  "options": {
+    "max_results": {
+      "sample": {
+        "body.input.max_results": 3
+      }
+    },
+    "include_domains": {
+      "sample": {
+        "body.input.include_domains": [
+          "example.com"
+        ]
+      }
+    }
+  },
+  "not_mapped": [
+    "country",
+    "effort",
+    "exclude_domains",
+    "locale",
+    "recency",
+    "search_depth"
+  ]
+}

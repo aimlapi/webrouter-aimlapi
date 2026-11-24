@@ -30,6 +30,7 @@ PRESETS = {
     "openrouter": ("https://openrouter.ai/api/v1/chat/completions", "OPENROUTER_API_KEY", "json_schema"),
     "deepseek": ("https://api.deepseek.com/chat/completions", "DEEPSEEK_API_KEY", "json_object"),
     "groq": ("https://api.groq.com/openai/v1/chat/completions", "GROQ_API_KEY", "json_object"),
+    "aimlapi": ("https://api.aimlapi.com/v1/chat/completions", "AIMLAPI_API_KEY", "json_schema"),
 }
 
 
@@ -96,6 +97,14 @@ def test_openai_api_key_goes_only_to_api_openai_com(monkeypatch: pytest.MonkeyPa
         LLMDecider(base_url="https://proxy.example.com/v1", api_key_env="OPENAI_API_KEY", model="m")
     with pytest.raises(ConfigurationError, match="sent only to"):
         LLMDecider(preset="groq", api_key_env="OPENAI_API_KEY", model="m")
+    assert TOKEN not in str(caught.value)
+
+
+@pytest.mark.parametrize("base_url", ["https://api.aimlapi.com.evil.example/v1", "https://aimlapi.com/v1"])
+def test_aimlapi_api_key_goes_only_to_api_aimlapi_com(base_url: str, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("AIMLAPI_API_KEY", TOKEN)
+    with pytest.raises(ConfigurationError, match=r"AIMLAPI_API_KEY is sent only to api\.aimlapi\.com") as caught:
+        LLMDecider(base_url=base_url, api_key_env="AIMLAPI_API_KEY", model="m")
     assert TOKEN not in str(caught.value)
 
 
