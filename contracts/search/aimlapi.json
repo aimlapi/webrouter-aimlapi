@@ -41,5 +41,18 @@
     "locale",
     "recency",
     "search_depth"
-  ]
+  ],
+  "source": [
+    "https://docs.aimlapi.com/quickstart/toolbox"
+  ],
+  "verified": {
+    "max_results": "live: tests/providers/test_aimlapi.py::test_live_search_returns_web_results",
+    "include_domains": "live: web/search input schema from POST /v1/tools/inspect, 2026-11-24"
+  },
+  "vendor_options": {
+    "max_cost_usd": {
+      "status": "passthrough",
+      "note": "a cap on the price of the run in USD; a run quoted above it is refused before it starts."
+    }
+  }
 }
